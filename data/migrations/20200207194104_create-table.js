@@ -8,17 +8,17 @@ exports.up = function(knex) {
               table.string('description', 128);
               table.integer('completed').defaultTo(0);
           })
-          .createTable('tasks', table => {
+          .createTable('projectTasks', table => {
               table.increments();
               table.string('description', 128).notNullable();
-              table.string('notes', 128);
+              table.string('notes', 128);              
+              table.integer('completed').defaultTo(0);
               table.integer('projectId')
                   .unsigned()
                   .notNullable()
-                  .references('project.id')
+                  .references('projects.id')
                   .onDelete('CASCADE')
                   .onUpdate('CASCADE');
-              table.integer('completed').defaultTo(0);
           })
           .createTable('resources', table => {
               table.increments();
@@ -48,7 +48,7 @@ exports.up = function(knex) {
         knex.schema
           .dropTableIfExists('projects-resources')
           .dropTableIfExists('resources')
-          .dropTableIfExists('tasks')
+          .dropTableIfExists('projectTasks')
           .dropTableIfExists('projects')
     )
   };

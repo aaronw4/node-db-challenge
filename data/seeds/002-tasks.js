@@ -1,6 +1,6 @@
 
 exports.seed = function(knex) {
-  return knex('tasks').insert([
+  return knex('projectTasks').insert([
     {
       description: 'Buy hanging ceiling light for kitchen.',
       notes: 'Check eBay for antiques.',

@@ -18,12 +18,12 @@ function createResource(resource) {
 
 function findTasks() {
     return db('projects')
-        .join('tasks', 'tasks.projectId', 'projects.id')
-        .select('projects.name', 'projects.description', 'tasks.description', 'tasks.notes')
+        .join('projectTasks', 'projectTasks.projectId', 'projects.id')
+        .select('projects.name', 'projects.description', 'projectTasks.description', 'projectTasks.notes')
 }
 
 function createTask(task) {
-    return db('tasks').insert(task)
+    return db('projectTasks').insert(task)
 }
 
 module.exports = {
