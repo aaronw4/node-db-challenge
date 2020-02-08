@@ -57,5 +57,32 @@ router.post('/resources', (req, res) => {
         })
 })
 
+router.get('/tasks', (req, res) => {
+    projects.findTasks()
+        .then(tasks => {
+            res.status(200).json(tasks);
+        })
+        .catch(err => {
+            res.status(500).json({
+                error: 'Failed to get tasks.'
+            })
+        })
+});
+
+router.post('/tasks', (req, res) => {
+    const taskData = req.body;
+
+    projects.createTask(taskData)
+        .then(task => {
+            res.status(201).json(task)
+        })
+        .catch(err => {
+            res.status(500).json({
+                error: 'Failed to create new task'
+            });
+            console.log(err)
+        })
+})
+
 
 module.exports = router;
