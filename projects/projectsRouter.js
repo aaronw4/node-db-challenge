@@ -28,6 +28,21 @@ router.post('/', (req, res) => {
                 error: 'Failed to create new project'
             })
         })
+});
+
+router.put('/:id', (req, res) => {
+    const {id} = req.params;
+    const changes = req.body;
+
+    projects.editProject(changes, id)
+        .then(update => {
+            res.status(200).json(update)
+        })
+        .catch(err => {
+            res.status(500).json({
+                error: 'Could not update project.'
+            })
+        })
 })
 
 router.get('/resources', (req, res) => {
@@ -83,6 +98,19 @@ router.post('/tasks', (req, res) => {
             console.log(err)
         })
 })
+
+router.get('/:id/details', (req, res) => {
+    projects.projectDetails(req.params.id)
+        .then(details => {
+            res.status(200).json(details);
+        })
+        .catch(err => {
+            res.status(500).json({
+                error: 'Failed to get project details.'
+            });
+            console.log(err);
+        })
+});
 
 
 module.exports = router;
