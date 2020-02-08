@@ -19,7 +19,7 @@ function createResource(resource) {
 function findTasks() {
     return db('projects')
         .join('projectTasks', 'projectTasks.projectId', 'projects.id')
-        .select('projects.name', 'projects.description', 'projectTasks.description', 'projectTasks.notes')
+        .select('projects.name', 'projects.description as projectDescription', 'projectTasks.description', 'projectTasks.notes')
 }
 
 function createTask(task) {
