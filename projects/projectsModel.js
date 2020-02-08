@@ -12,6 +12,10 @@ function editProject(project, id) {
     return db('projects').where({id}).update(project);
 }
 
+function deleteProject(id) {
+    return db('projects').where({id}).delete()
+}
+
 function findResources() {
     return db('resources')
 };
@@ -41,6 +45,7 @@ module.exports = {
     findProjects,
     createProject,
     editProject,
+    deleteProject,
     findResources,
     createResource,
     findTasks,

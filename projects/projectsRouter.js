@@ -45,6 +45,26 @@ router.put('/:id', (req, res) => {
         })
 })
 
+router.delete('/:id', (req, res) => {
+    const {id} = req.params;
+
+    projects.deleteProject(id)
+        .then(project => {
+            if (project) {
+                res.status(200).json({removed: project});
+            } else {
+                res.status(404).json({
+                    error: 'Could not find project with that id.'
+                })
+            }
+        })        
+        .catch(err => {
+            res.status(500).json({
+                error: 'Could not delete project.'
+            })
+        })
+})
+
 router.get('/resources', (req, res) => {
     projects.findResources()
         .then(resources => {
