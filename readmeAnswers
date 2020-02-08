@@ -1,0 +1,19 @@
+- [ ] Explain the difference between `Relational Databases` and `SQL`.
+
+A relational database describes the type database that you have 
+while SQL is a standard language used to manage databases.
+SQL is how we interact with a database.
+
+- [ ] Why do tables need a `primary key`?
+
+The primary key insures that every row in that table is unique.
+Since it is possible for two rows to have the same data (like a name),
+the primary key will distinguish between them.
+
+- [ ] What is the name given to a table column that references the primary key on another table.
+
+Foreign key
+
+- [ ] What do we need in order to have a _many to many_ relationship between two tables.
+
+You need an intermediary table.
